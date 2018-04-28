@@ -1,0 +1,48 @@
+<h1 class="text-center jumbotron">
+    {{typeFlights}}
+</h1>
+<div *ngFor="let airline of airlines">
+    <h1>{{airline.name}}</h1>
+    <div class="row card-group">
+        <div class="col-5" *ngFor="let flight of airline.flightList; let i = index">
+            <div class="card w-100">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm" id="centerImage">
+                            <img class="center-block" src="{{flight.flightImageUrl}}" style="width:100%">
+                        </div>
+                        <div class="col-sm bottom-align-text">
+
+                            <h4>{{flight.origin}} - {{flight.destiny}}</h4>
+                            <h5>{{flight.flightDay | date : "medium"}}</h5>
+                            <h6>${{flight.cost}} COP</h6>
+
+                        </div>
+                        <div class="col-sm" id="wrapper">
+                            <a (click)="reservate(flight.id)" class="btn btn-primary">Reservate</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<popup (confirmClick)="confirmReservation()" (cancelClick)="cancelReservation()">
+    <label>Are you of legal age? (more than 18 years) :
+        <input type="checkbox" [checked]="isAdult" (change)="isAdult = !isAdult">
+    </label>
+    <br/>
+    <br/>
+    <br/>
+    <label *ngIf="isAdult">Enter your cedule:
+        <input type="number" [(ngModel)]="cedule" required>
+    </label>
+
+    <br/>
+    <br/>
+
+
+</popup>
