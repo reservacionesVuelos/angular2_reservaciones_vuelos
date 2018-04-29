@@ -1,8 +1,25 @@
-
-
 <h1 class="text-center jumbotron">
     {{typeFlights}}
 </h1>
+
+<div align="center">
+    <form>
+        <div class="form-row align-items-center centerForm">
+            <div class="col-auto my-1">
+                <label class="mr-sm-2" for="inlineFormCustomSelect">Filter by origin location: </label>
+                <input type="text" [(ngModel)]="selectedOriginLocation" required [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="col-auto my-1">
+                <div class="bottonPadding">
+                    <button (click)="filterByOriginLocation()" class="btn btn-primary">Filter</button>
+                    <a (click)="clear()" class="btn btn-primary">List all flights</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
 <div *ngFor="let airline of airlines" class="center">
     <h1>{{airline.name}}</h1>
     <div class="row card-group">
@@ -44,9 +61,6 @@
     <label *ngIf="isAdult">Enter your cedule:
         <input type="number" [(ngModel)]="cedule" required>
     </label>
-
     <br/>
     <br/>
-
-
 </popup>

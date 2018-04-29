@@ -16,17 +16,14 @@ import { UserService } from '../../services/user.service';
     private selectedFlight:Flight;
     private isAdult:boolean = false; 
     private cedule:number;
+    private selectedOriginLocation:String ="";
 
     constructor(private popup:Popup, private flightService:FlightService, private userService:UserService) { 
 
     }
   
     ngOnInit() {
-      this.flightService.getAllFlights().subscribe(
-        data => {
-          this.airlines = data;
-        }
-      )
+      this.getAllAirlines();
     }
 
     reservate(flight:Flight){
@@ -44,6 +41,7 @@ import { UserService } from '../../services/user.service';
         animation: "fadeInDown"
       };
 
+      window.scrollTo(0, 0)
       this.popup.show(this.popup.options);
     }
 
@@ -77,6 +75,27 @@ import { UserService } from '../../services/user.service';
 
     cancelReservation(){
       
+    }
+
+    filterByOriginLocation(){
+      this.flightService.getFlightsByOriginLocation(this.selectedOriginLocation).subscribe(
+        data => {
+          this.airlines = data;
+        }
+      )
+    }
+
+    clear(){
+      this.selectedOriginLocation="";
+      this.getAllAirlines();
+    }
+
+    getAllAirlines(){
+      this.flightService.getAllFlights().subscribe(
+        data => {
+          this.airlines = data;
+        }
+      )
     }
   
   

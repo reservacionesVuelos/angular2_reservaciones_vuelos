@@ -16,4 +16,8 @@ export class FlightService  extends APIService{
     getAllFlights(){
         return this.get(this.resourceUrl+'/');
     }
+
+    getFlightsByOriginLocation(originLocation:String){
+        return this.get(this.resourceUrl+'/origin/'+originLocation);
+    }
 }
