@@ -3,6 +3,8 @@ import {Popup} from 'ng2-opd-popup';
 //local imports
 import {Airline} from '../../models/airline'
 import { FlightService } from '../../services/flight.service';
+import { Flight } from '../../models/flight';
+import { UserService } from '../../services/user.service';
 @Component({
     selector: 'app-home-page',
     templateUrl: './home-page.component.html',
@@ -10,12 +12,12 @@ import { FlightService } from '../../services/flight.service';
   })
   export class HomePageComponent implements OnInit {
     private airlines: Airline[] = [];
-    private typeFlights:String = 'All flights';
-    private selectedFlightId = -1;
+    private typeFlights:String = 'Flights';
+    private selectedFlight:Flight;
     private isAdult:boolean = false; 
     private cedule:number;
 
-    constructor(private popup:Popup, private flightService:FlightService) { 
+    constructor(private popup:Popup, private flightService:FlightService, private userService:UserService) { 
 
     }
   
@@ -23,13 +25,12 @@ import { FlightService } from '../../services/flight.service';
       this.flightService.getAllFlights().subscribe(
         data => {
           this.airlines = data;
-          console.log(this.airlines);
         }
       )
     }
 
-    reservate(flightId:number){
-      this.selectedFlightId=flightId;
+    reservate(flight:Flight){
+      this.selectedFlight=flight;
       this.popup.options = {
         header: "Make a reservation",
         color: "#5cb85c",
@@ -49,7 +50,18 @@ import { FlightService } from '../../services/flight.service';
     confirmReservation(){
       if(this.isAdult){
         if(this.cedule != null){
-          this.popup.hide();
+          //try to create the reservation
+          this.userService.joinFlight(this.cedule,this.selectedFlight).subscribe(
+            data => {
+              if (data){
+                alert("Success, you have reserved the flight successfully ")
+              }else{
+                alert("Yoy cant reserve this flight, probably is because you already have a reserve for that day")
+              }
+              this.popup.hide();
+            }
+          );
+          
         }
         else{
           alert("You need to specify the cedule number.")

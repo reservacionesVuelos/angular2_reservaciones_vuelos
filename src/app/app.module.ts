@@ -15,10 +15,13 @@ import { APIService } from './common/api.service';
 import { UserService } from './services/user.service';
 import { FlightService } from './services/flight.service';
 import { AppConfiguration } from './common/config/app-configuration.service';
+import { ConsultReservationComponent } from './pages/consult-reservation/consult-reservation.component'
 
 const ROUTES = [
   { path: '', component: HomePageComponent },
+  { path: 'consult-reservation', component: ConsultReservationComponent },
   { path: '**', component: PageNotFoundComponent }
+  
 ]
 
 @NgModule({
@@ -29,7 +32,8 @@ const ROUTES = [
     
     AppComponent,
     HomePageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ConsultReservationComponent
   ],
   imports: [
     PopupModule.forRoot(),

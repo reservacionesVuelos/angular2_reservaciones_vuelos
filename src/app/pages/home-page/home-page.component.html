@@ -1,11 +1,13 @@
+
+
 <h1 class="text-center jumbotron">
     {{typeFlights}}
 </h1>
-<div *ngFor="let airline of airlines">
+<div *ngFor="let airline of airlines" class="center">
     <h1>{{airline.name}}</h1>
     <div class="row card-group">
         <div class="col-5" *ngFor="let flight of airline.flightList; let i = index">
-            <div class="card w-100">
+            <div class="card w-100 ">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm" id="centerImage">
@@ -19,7 +21,7 @@
 
                         </div>
                         <div class="col-sm" id="wrapper">
-                            <a (click)="reservate(flight.id)" class="btn btn-primary">Reservate</a>
+                            <a (click)="reservate(flight)" class="btn btn-primary">Reservate</a>
 
                         </div>
                     </div>
@@ -27,6 +29,8 @@
             </div>
         </div>
     </div>
+    <br>
+    <br>
 </div>
 
 
