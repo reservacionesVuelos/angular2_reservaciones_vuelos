@@ -1,3 +1,7 @@
+# Codacy Support
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/63a3e651a6934a6ca17c814c7dfe4218)](https://www.codacy.com/app/Casvad/angular2_reservaciones_vuelos?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=reservacionesVuelos/angular2_reservaciones_vuelos&amp;utm_campaign=Badge_Grade)
+
 # AngularReservacionesVuelos
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
