@@ -1,1 +1,51 @@
-<h1>Hola mundo</h1>
+<h1 class="text-center jumbotron">
+    {{reservationTitle}}
+</h1>
+<br>
+
+<div align="center">
+    <form>
+        <div class="form-row align-items-center centerForm">
+            <div class="col-auto my-1">
+                <label class="mr-sm-2" for="inlineFormCustomSelect">Enter the cedule number: </label>
+                <input type="number" [(ngModel)]="selectedCedule" required [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="col-auto my-1">
+                <div class="bottonPadding">
+                    <button (click)="consultReservations()" class="btn btn-primary">Find reservations</button>
+                </div>
+                <div>
+                    <a (click)="cleanPage()" class="btn btn-primary">Clean</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<br>
+<br>
+<div *ngIf="flights.length>0">
+    <div class="row card-group">
+        <div class="col-5" *ngFor="let flight of flights; let i = index">
+            <div class="card w-100 ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm" id="centerImage">
+                            <img class="center-block" src="{{flight.flightImageUrl}}" style="width:100%">
+                        </div>
+                        <div class="col-sm bottom-align-text">
+
+                            <h4>{{flight.origin}} - {{flight.destiny}}</h4>
+                            <h5>{{flight.flightDay | date : "medium"}}</h5>
+                            <h6>${{flight.cost}} COP</h6>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+    </div>
+</div>

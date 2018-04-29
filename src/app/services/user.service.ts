@@ -17,4 +17,8 @@ export class UserService  extends APIService{
     joinFlight(cedule:number,flight:Flight){
         return this.post(this.resourceUrl+'/'+cedule+"/joinFlight",flight);
     }
+
+    obtainReservedFlights(cedule:number){
+        return this.get(this.resourceUrl+'/'+cedule+'/reservedFlights')
+    }
 }

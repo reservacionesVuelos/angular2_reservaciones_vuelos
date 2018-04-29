@@ -10,7 +10,15 @@ h2 { color: #7c795d; font-family: 'Trocchi', serif; font-size: 28px; font-weight
 p { color: #4c4a37; font-family: 'Source Sans Pro', sans-serif; font-size: 18px; line-height: 32px; margin: 0 0 24px; }
 
 
-a { color: #ff9900; background: #CFCE9A; text-decoration: none; }
+a,button { color: #4c4a37; background: #CFCE9A; text-decoration: none; }
 
 
-a:hover { color: #ffcc66 }
+a:hover,button:hover { color: #ffcc66 }
+
+.centerForm{
+    display:initial !important;
+}
+
+.bottonPadding{
+    padding-bottom: 10px;
+}
